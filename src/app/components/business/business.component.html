@@ -12,16 +12,17 @@
     </ion-row>
 
     <ion-row class="ion-align-items-center">
-      <ion-col size="10">
+      <ion-col size="enableEdit ? 12 : 10">
         <ion-label class="LargeBold">Firm Registered Address</ion-label>
       </ion-col>
-      <ion-col col="2">
+      <ion-col *ngIf="!enableEdit" col="2">
         <ion-button style="height: 1rem" fill="solid" color="success" size="small" (click)="editAddress()">Edit</ion-button>
       </ion-col>
-      <ion-col size="12">
+      <ion-col size="12" *ngIf="!enableEdit">
         <ion-label class="SmallNormal">Pooja Mart, Shop no-3 Amrut Kunj M.G Road</ion-label>
         <ion-label class="SmallNormal">Ghatkopar East, Mumbai-400077</ion-label>
       </ion-col>
+      <ion-textarea *ngIf="enableEdit" style="padding-inline: 0.3rem;" [rows]="3" [(ngModel)]="dataService.user.businessaddress" class="inputbox" labelPlacement="floating" [autoGrow]="true"></ion-textarea>
     </ion-row>
   </div>
 </ion-row>

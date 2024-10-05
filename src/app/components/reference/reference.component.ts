@@ -17,22 +17,10 @@ export class ReferenceComponent  implements OnInit {
   constructor(public dataService: DataService) { }
 
   ngOnInit(): void {
-    if (!this.dataService.user.references || this.dataService.user.references.length === 0) {
-      this.dataService.user.references = [] as Reference[];
-      this.referenceUser = {} as Reference;
-      console.log('Empty');
-    } else if (this.dataService.user.references.length === 1) {
-      if (this.dataService.currentPage === 2 || this.dataService.currentPage === 3) {
-        console.log('Should Go in this block');
-        console.log(this.dataService.user.references[this.referenceNo - 1]);
-        this.referenceUser = {...this.dataService.user.references[this.referenceNo - 1]};
-      } else {
-        this.referenceUser = {} as Reference;
-      }
-    } else if (this.dataService.user.references.length === 2) {
-      if (this.dataService.currentPage === 4 || this.dataService.currentPage === 5) {
-        this.referenceUser = {...this.dataService.user.references[this.referenceNo - 1]};
-      } 
+    if (this.referenceNo == 1) {
+      this.referenceUser = this.dataService.user.references1;
+    } else if (this.referenceNo == 2) {
+      this.referenceUser = this.dataService.user.references2;
     }
   }
 

@@ -7,7 +7,7 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./business.component.scss'],
 })
 export class BusinessComponent  implements OnInit {
-
+  enableEdit: boolean = false;
   constructor(public dataService: DataService) { }
 
   ngOnInit() {
@@ -15,7 +15,7 @@ export class BusinessComponent  implements OnInit {
   }
 
   editAddress() {
-
+    this.enableEdit = !this.enableEdit
   }
 
 }

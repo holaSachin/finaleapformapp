@@ -14,7 +14,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-segment (ionChange)="segmentChanged($event)" mode="md" [value]="dataService.activeSegment" color="success">
+  <ion-segment (ionChange)="segmentChanged($event)" mode="md" [(ngModel)]="dataService.activeSegment" color="success">
     <ion-segment-button value="personal">
       <ion-label class="Mediumbold">Personal</ion-label>
     </ion-segment-button>
@@ -26,9 +26,9 @@
     </ion-segment-button>
   </ion-segment>
 
-  <app-profile (getPersonalDetails)="receiveUser($event)" *ngIf="dataService.activeSegment === 'personal' && (!openReferenceOne && !openReferenceTwo) && dataService.currentPage === 1"></app-profile>
-  <app-reference (getReferenceDetails)="receiveRefence($event)" [referenceNo]="1" *ngIf="dataService.activeSegment === 'personal' && openReferenceOne && !openReferenceTwo && (dataService.currentPage === 2 || dataService.currentPage === 3)"></app-reference>
-  <app-reference (getReferenceDetails)="receiveRefence($event)" [referenceNo]="2" *ngIf="dataService.activeSegment === 'personal' && openReferenceTwo && !openReferenceOne && (dataService.currentPage === 4 || dataService.currentPage === 5)"></app-reference>
+  <app-profile *ngIf="dataService.activeSegment === 'personal' && (!openReferenceOne && !openReferenceTwo) && dataService.currentPage === 1"></app-profile>
+  <app-reference [referenceNo]="1" *ngIf="dataService.activeSegment === 'personal' && openReferenceOne && !openReferenceTwo && (dataService.currentPage === 2 || dataService.currentPage === 3)"></app-reference>
+  <app-reference [referenceNo]="2" *ngIf="dataService.activeSegment === 'personal' && openReferenceTwo && !openReferenceOne && (dataService.currentPage === 4 || dataService.currentPage === 5)"></app-reference>
   <app-business *ngIf="dataService.activeSegment === 'business' && dataService.currentPage === 6"></app-business>
   <app-uploaddocumnets *ngIf="dataService.activeSegment === 'upload' && dataService.currentPage === 7"></app-uploaddocumnets>
 </ion-content>

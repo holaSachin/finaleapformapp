@@ -19,22 +19,8 @@ export class DataService {
 
   constructor(public alertController: AlertController, public toastController: ToastController, public loadingController: LoadingController) {
     this.user = {} as User;
-    this.user.references = [] as Reference[];
-    // this.user = {
-    //   prefix: 'Mr',
-    //   physicallyChallenged: 'No',
-    //   maritalStatus: 'Single',
-    //   community: 'Sikh',
-    //   category: 'OBC',
-    //   gender: 'Male',
-    //   references: [],
-    //   gstno: '',
-    //   firmaddress: '',
-    //   addressproofurl: '',
-    //   ownershipproofurl: '',
-    //   residenceproofurl: '',
-    //   imgurl: '',
-    // }
+    this.user.references1 = {} as Reference;
+    this.user.references2 = {} as Reference;
   }
 
   public async displayToast(

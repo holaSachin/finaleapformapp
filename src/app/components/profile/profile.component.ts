@@ -9,14 +9,14 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent  implements OnInit {
-  @Output() getPersonalDetails: EventEmitter<User> = new EventEmitter<User>;
+  // @Output() getPersonalDetails: EventEmitter<User> = new EventEmitter<User>;
   static profilePageInstance: ProfileComponent;
   isImageUpload: boolean = false;
   prefixes = ['Mr', 'Ms', 'Mrs', 'M/S'];
   physicallychallenged = ['Yes', 'No'];
   maritals = ['Married', 'Unmarried', 'Single', 'Divorced'];
   communities = ['Hindu', 'Muslim', 'Christian', 'Jain', 'Sikh', 'Others'];
-  categories = ['OBC', 'SC', 'ST', 'Reserved'];
+  categories = ['General', 'OBC', 'SC', 'ST', 'Reserved'];
   genders = ['Male', 'Female', 'Other'];
 
   constructor(public dataservice: DataService) {
@@ -24,7 +24,6 @@ export class ProfileComponent  implements OnInit {
 
   ngOnInit() {
     console.log('profile component');
-    console.log('value of isbasicdetailsfilled',this.dataservice.isBasicDetailsFilled);
   }
 
   // async takePicture() {

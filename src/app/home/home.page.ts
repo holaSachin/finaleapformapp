@@ -25,17 +25,12 @@ export class HomePage implements OnInit {
 
   segmentChanged(event: CustomEvent) {
     this.dataService.activeSegment = event.detail.value;
-    // if (this.dataService.activeSegment === 'business') {
-    //   if (!this.validatePersonDetails() || this.dataService.user.references.length !== 2) {
-    //     this.dataService.displayToast('Please Fill Perosnal Details First', 'WARNING');
-    //     this.dataService.activeSegment = 'personal';
-    //   }
-    // } else if (this.dataService.activeSegment === 'upload') {
-    //   if (!this.validatePersonDetails() || this.dataService.user.references.length !== 2) {
-    //     this.dataService.displayToast('Please Fill Perosnal Details First', 'WARNING');
-    //     this.dataService.activeSegment = 'personal';
-    //   }
-    // }
+    if (this.dataService.activeSegment === 'business' || this.dataService.activeSegment === 'upload') {
+      if (!this.validatePersonDetails() || (this.dataService.user.references2 && this.dataService.user.references1)) {
+        this.dataService.displayToast('Please Fill Perosnal Details First', 'WARNING');
+        this.dataService.activeSegment = 'personal';
+      }
+    } 
   }
 
   validatePersonDetails(): boolean {
@@ -67,71 +62,45 @@ export class HomePage implements OnInit {
       this.dataService.displayToast('Please select your gender', 'WARNING');
       return false;
     }
-    
     return true;
   }
-
-  // validateBusinessDetails(): boolean {
-  //   if (!this.userObj.gstno) {
-  //     this.dataService.displayToast('Please enter your GST No', 'WARNING');
-  //     return false;
-  //   } 
-  //   return true
-  // }
 
   goToNext(value: number) {
     switch (this.dataService.currentPage) {
       // Page 1: Profile Details
       case 1: {
         this.goToReferenceOne();
-        console.log(this.dataService.currentPage);
         break;
       }
       // Page 2: Reference 1 basice details
       case 2: {
         this.goToReferenceOneMore();
-        console.log(this.dataService.currentPage);
         break;
       }
       // Page 3: Reference 1 more details
       case 3: {
         this.gotToReferenceTwo();
-        console.log(this.dataService.currentPage);
-
         break
       }
       // Page 4: Reference 2 basice details
       case 4: {
         this.gotToReferenceTwoMore();
-        console.log(this.dataService.currentPage);
-
         break
       }
       // Page 5: Reference 2 more details
       case 5: {
         this.goToBusiness();
-        console.log(this.dataService.currentPage);
-
         break
       }
       // Page 6: Business Details
       case 6: {
         this.goToUploadDocs();
-        console.log(this.dataService.currentPage);
-
         break
       }
     }
   }
   submit() {
-
-  }
-  receiveUser($event: User) {
-    this.dataService.user, this.userObj = $event;
-  }
-
-  receiveRefence($event: Reference) {
-    this.userObj.references.push($event);
+    console.log(JSON.stringify(this.dataService.user));
   }
 
   goBack(value: number) {
@@ -146,7 +115,7 @@ export class HomePage implements OnInit {
         this.dataService.currentPage = 5;
         this.openReferenceTwo = true;
         this.dataService.activeSegment = 'personal';
-        this.referenceComponent.isBasicDetailsFilled = true;
+        this.dataService.isBasicDetailsFilled = true;
         break
       }
       // Page 5: Going back from Reference 2 more details
@@ -154,7 +123,7 @@ export class HomePage implements OnInit {
         this.dataService.currentPage = 4;
         this.openReferenceTwo = true;
         this.dataService.activeSegment = 'personal';
-        this.referenceComponent.isBasicDetailsFilled = false;
+        this.dataService.isBasicDetailsFilled = false;
         break
       }
       // Page 4 : Going back from Reference 2 basice details
@@ -162,7 +131,7 @@ export class HomePage implements OnInit {
         this.dataService.currentPage = 3;
         this.openReferenceTwo = false;
         this.openReferenceOne = true;
-        this.referenceComponent.isBasicDetailsFilled = true;
+        this.dataService.isBasicDetailsFilled = true;
         this.dataService.activeSegment = 'personal';
         break
       }
@@ -171,7 +140,7 @@ export class HomePage implements OnInit {
         this.dataService.currentPage = 2;
         this.openReferenceOne = true;
         this.dataService.activeSegment = 'personal';
-        this.referenceComponent.isBasicDetailsFilled = false;
+        this.dataService.isBasicDetailsFilled = false;
         break
       }
       // Page 2: Going back to Profile
@@ -195,14 +164,14 @@ export class HomePage implements OnInit {
     if (this.referenceComponent.validateReferenceDetails()) {
       this.openReferenceOne = true;
       this.dataService.currentPage = 3;
-      this.referenceComponent.isBasicDetailsFilled = true;
+      this.dataService.isBasicDetailsFilled = true;
     }
   }
 
   gotToReferenceTwo() {
     if (this.referenceComponent.validateReferenceDetails()) {
       this.referenceComponent.goNextForMoreDetails();
-      this.referenceComponent.isBasicDetailsFilled = false;
+      this.dataService.isBasicDetailsFilled = false;
       this.openReferenceTwo = true;
       this.openReferenceOne = false;
       this.dataService.currentPage = 4;
@@ -211,7 +180,7 @@ export class HomePage implements OnInit {
 
   gotToReferenceTwoMore() {
     if (this.referenceComponent.validateReferenceDetails()) {
-      this.referenceComponent.isBasicDetailsFilled = true;
+      this.dataService.isBasicDetailsFilled = true;
       this.openReferenceTwo = true;
       this.dataService.currentPage = 5;
     }
@@ -223,7 +192,6 @@ export class HomePage implements OnInit {
       this.dataService.activeSegment = 'business';
       this.dataService.currentPage = 6;
     }
-    console.log(this.userObj)
   }
 
   goToUploadDocs() {

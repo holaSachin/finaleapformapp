@@ -8,8 +8,10 @@ export interface User {
   community: string;
   category: string;
   gender: string;
-  references: Reference[],
+  references1: Reference;
+  references2: Reference;
   gstno: string;
+  businessaddress: string;
   firmaddress: string;
   addressproofurl: string;
   ownershipproofurl: string;
