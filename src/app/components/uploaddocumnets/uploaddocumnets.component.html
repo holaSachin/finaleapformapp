@@ -1,0 +1,13 @@
+
+
+<ion-row *ngFor="let item of uploadDocsLabelObj">
+  <ion-label class="Mediumbold ion-margin-start ion-margin-top" color="dark">{{item.label}}</ion-label>
+  <ion-card>
+    <ion-card-content>
+      <ion-row class="ion-justify-content-center ion-align-items-center">
+        <ion-icon color="success" (click)="uploadImage(item.value)" name="cloud-upload" class="upload-icon"></ion-icon>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  <ion-label class="SmallNormal ion-margin-start" color="medium">{{item.details}}</ion-label>
+</ion-row>

@@ -1,0 +1,85 @@
+<ion-row class="ion-padding-horizontal" style="width: 100%;">
+  <ion-col size="12" class="ion-text-center ion-margin-top">
+    <ion-label color="medium" class="MediumNormal">Please fill details of your personal reference</ion-label>
+  </ion-col>
+  <ion-col size="12">
+    <ion-label color="dark" class="Mediumbold" position="stacked">Reference {{referenceNo}}</ion-label>
+  </ion-col>
+
+  <!-- Basic Refernce Details -->
+  <div *ngIf="!isBasicDetailsFilled">
+    <!-- First name -->
+    <ion-row>
+      <ion-col size="12">
+        <ion-label position="stacked">First Name</ion-label>
+      </ion-col>
+      <ion-input [(ngModel)]="referenceUser.firstname" class="ion-padding-horizontal inputbox" type="text"></ion-input>
+    </ion-row>
+
+    <!-- Last name -->
+    <ion-row>
+      <ion-col size="12">
+        <ion-label position="stacked">Last Name</ion-label>
+      </ion-col>
+      <ion-input [(ngModel)]="referenceUser.lastname" class="ion-padding-horizontal inputbox" type="text"></ion-input>
+    </ion-row>
+
+    <!-- Mobile no -->
+    <ion-row>
+      <ion-col size="12">
+        <ion-label position="stacked">Mobile Number</ion-label>
+      </ion-col>
+      <ion-input [(ngModel)]="referenceUser.mobno" class="ion-padding-horizontal inputbox" type="tel"></ion-input>
+    </ion-row>
+
+    <!-- Email -->
+    <ion-row>
+      <ion-col size="12">
+        <ion-label position="stacked">Email Address</ion-label>
+      </ion-col>
+      <ion-input [(ngModel)]="referenceUser.email" class="ion-padding-horizontal inputbox" type="email"></ion-input>
+    </ion-row>
+
+    <!-- Relationship -->
+    <ion-row>
+      <ion-col size="12">
+        <ion-label position="stacked">Relationship with applicant</ion-label>
+      </ion-col>
+      <ion-input [(ngModel)]="referenceUser.relation" class="ion-padding-horizontal inputbox" type="text"></ion-input>
+    </ion-row>
+
+    <!-- Years known -->
+    <ion-row>
+      <ion-col size="12">
+        <ion-label position="stacked">Years known to applicant</ion-label>
+      </ion-col>
+      <ion-input [(ngModel)]="referenceUser.yearsknown" class="ion-padding-horizontal inputbox" type="number" ></ion-input>
+    </ion-row>
+  </div>
+
+  <div *ngIf="isBasicDetailsFilled">
+    <!-- Designation -->
+    <ion-row>
+      <ion-col size="12">
+        <ion-label position="stacked">Desgination</ion-label>
+      </ion-col>
+      <ion-input [(ngModel)]="referenceUser.designation" class="ion-padding-horizontal inputbox" type="text"></ion-input>
+    </ion-row>
+
+    <!-- Address -->
+    <ion-row>
+      <ion-col size="12">
+        <ion-label position="stacked">Address</ion-label>
+      </ion-col>
+      <ion-textarea style="padding-inline: 0.3rem;" [rows]="3" [(ngModel)]="referenceUser.address" class="inputbox" labelPlacement="floating" [autoGrow]="true"></ion-textarea>
+    </ion-row>
+
+    <!-- Pincode -->
+    <ion-row>
+      <ion-col size="12">
+        <ion-label position="stacked">Pincode</ion-label>
+      </ion-col>
+      <ion-input [(ngModel)]="referenceUser.pincode" class="ion-padding-horizontal inputbox" type="text"></ion-input>
+    </ion-row>
+  </div>
+</ion-row>

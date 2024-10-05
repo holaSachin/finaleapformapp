@@ -1,20 +1,41 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header [collapse]="'fade'" class="ion-no-border" mode="md">
+  <ion-toolbar class="ion-padding-top">
+    <ion-buttons slot="start">
+      <ion-back-button *ngIf="openReferenceOne || openReferenceTwo || dataService.activeSegment !== 'personal'" defaultHref="/" icon="arrow-back" (click)="goBack(dataService.currentPage)"></ion-back-button>
+    </ion-buttons>
+    <ion-row>
+      <ion-row class="ion-align-items-center">
+        <ion-img style="height: 3rem" class="ion-margin-horizontal" src="../../assets/resources/logo.png" alt="finaleap logo"></ion-img>
+        <ion-title class="LargeBold ion-no-padding">Finaleap</ion-title>
+        <ion-img style="height: 1.2rem" src="../../assets/resources/check.png" alt="check logo"></ion-img>
+      </ion-row>
+    </ion-row>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-segment (ionChange)="segmentChanged($event)" mode="md" [value]="dataService.activeSegment" color="success">
+    <ion-segment-button value="personal">
+      <ion-label class="Mediumbold">Personal</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="business">
+      <ion-label class="Mediumbold">Business</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="upload">
+      <ion-label class="Mediumbold">Upload Docs</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <app-profile (getPersonalDetails)="receiveUser($event)" *ngIf="dataService.activeSegment === 'personal' && (!openReferenceOne && !openReferenceTwo) && dataService.currentPage === 1"></app-profile>
+  <app-reference (getReferenceDetails)="receiveRefence($event)" [referenceNo]="1" *ngIf="dataService.activeSegment === 'personal' && openReferenceOne && !openReferenceTwo && (dataService.currentPage === 2 || dataService.currentPage === 3)"></app-reference>
+  <app-reference (getReferenceDetails)="receiveRefence($event)" [referenceNo]="2" *ngIf="dataService.activeSegment === 'personal' && openReferenceTwo && !openReferenceOne && (dataService.currentPage === 4 || dataService.currentPage === 5)"></app-reference>
+  <app-business *ngIf="dataService.activeSegment === 'business' && dataService.currentPage === 6"></app-business>
+  <app-uploaddocumnets *ngIf="dataService.activeSegment === 'upload' && dataService.currentPage === 7"></app-uploaddocumnets>
 </ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button *ngIf="dataService.activeSegment !== 'upload'" (click)="goToNext(dataService.currentPage)" color="success" expand="block">Next</ion-button>
+    <ion-button *ngIf="dataService.activeSegment === 'upload'" (click)="submit()" color="success" expand="block">Submit</ion-button>
+  </ion-toolbar> 
+</ion-footer>

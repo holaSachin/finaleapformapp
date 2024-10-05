@@ -34,4 +34,180 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+// @import "@ionic/angular/css/palettes/dark.system.css";
+* {
+  transition: all 0.3s;
+  scroll-behavior: smooth;
+}
+
+.VLargeNormal {
+  font-family: "Open Sans", sans-serif;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.VLargeSemibold {
+  font-family: "Open Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.VLargeBold {
+  font-family: "Open Sans", sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.transaparent-modal {
+  --background: rgba(44, 39, 45, 0.2);
+}
+
+.LargeNormal {
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.LargeSemibold {
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.LargeBold {
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.MediumNormal {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.MediumSemibold {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.Mediumbold {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.SmallBold {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.SmallSemibold {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.SmallNormal {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.VSmallNormal {
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.VSmallBold {
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.VVSmallNormal {
+  font-family: "Open Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.VVLargeBold {
+  font-family: "Open Sans", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.captialize {
+  text-transform: capitalize;
+}
+
+ion-header {
+  background-color: white;
+}
+
+ion-segment {
+  text-transform: capitalize;
+  background: white;
+  ion-label {
+    text-transform: capitalize;
+  }
+}
+
+ion-item {
+  --tex: none;
+  --background: transparent;
+}
+
+ion-select {
+  width: 90vw;
+  background-color: white;
+  justify-content: center;
+}
+
+ion-content {
+ --background: #F9F5F0;
+}
+
+ion-footer {
+  --background: #F9F5F0;
+  padding: 0.5rem;
+}
+
+ion-button {
+  --color: blue;
+  height: 3rem;
+  text-transform: capitalize;
+}
+
+.inputbox {
+  background: white;
+  width: 90vw
+}
+
+ion-card {
+  --background: white;
+  box-shadow: none;
+  width: 100%;
+  padding-block: 2rem;
+}
+/* custom Toast css */
+.success-toast {
+  --color: var(--ion-color-success);
+  --button-color: var(--ion-color-success);
+  --background: var(--ion-background-color);
+}
+
+.fail-toast {
+  --color: var(--ion-color-danger);
+  --button-color: var(--ion-color-danger);
+  --background: var(--ion-background-color);
+}
+
+.warning-toast {
+  --color: var(--ion-color-warning-contrast);
+  --button-color: var(--ion-background-color);
+  --background: var(--ion-color-warning);
+}

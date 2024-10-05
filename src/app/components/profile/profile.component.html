@@ -1,0 +1,87 @@
+<div class="ion-padding-horizontal">
+  <!-- Profile Picture -->
+  <ion-row class="ion-align-items-center ion-justify-content-center">
+    <ion-col size="12" class="ion-text-center">
+      <ion-label color="medium" class="MediumNormal">Please fill all the following details</ion-label>
+    </ion-col>
+    <ion-col size="12">
+      <ion-img *ngIf="!dataservice.user.imgurl" style="height: 6rem;" src="../../../assets/resources/person.png" alt="Upload profile photo"></ion-img>
+      <ion-img *ngIf="dataservice.user.imgurl" style="height: 6rem;" src="../../../assets/resources/person.png" alt="Upload profile photo"></ion-img>
+    </ion-col>
+    <ion-col size="12" class="ion-text-center">
+      <ion-label class="SmallNormal" color="medium">Upload profile photo</ion-label>
+    </ion-col>
+  </ion-row>
+
+  <!-- Prefix -->
+  <ion-row>
+    <ion-col size="12">
+      <ion-label class="SmallBold" color="dark">Prefix</ion-label>
+    </ion-col>
+    <ion-radio-group mode="md" [(ngModel)]="dataservice.user.prefix">
+      <ion-row>
+        <ion-item lines="none" *ngFor="let prefix of prefixes">
+          <ion-label class="SmallNormal" color="medium">{{prefix}}</ion-label>
+          <ion-radio color="success" slot="start" [value]="prefix"></ion-radio>
+        </ion-item>
+      </ion-row>
+    </ion-radio-group>
+  </ion-row>
+
+  <!-- Physically Challenged -->
+  <ion-row>
+    <ion-col size="12">
+      <ion-label class="SmallBold" color="dark">Physically Challenged?</ion-label>
+    </ion-col>
+    <ion-radio-group [(ngModel)]="dataservice.user.physicallyChallenged" mode="md">
+      <ion-row class="ion-justify-content-center">
+        <ion-item lines="none" *ngFor="let item of physicallychallenged">
+          <ion-label>{{item}}</ion-label>
+          <ion-radio color="success" slot="start" [value]="item"></ion-radio>
+        </ion-item>
+      </ion-row>
+    </ion-radio-group>
+  </ion-row>
+
+  <!-- Marital Status -->
+  <ion-row>
+    <ion-col size="12">
+      <ion-select [(ngModel)]="dataservice.user.maritalStatus" label-placement="floating" label="Marital Status" mode="md" justify="space-between" fill="outline">
+        <ion-select-option *ngFor="let item of maritals" [value]="item">{{item}}</ion-select-option>
+      </ion-select>
+    </ion-col>
+  </ion-row>
+
+  <!-- Community -->
+  <ion-row>
+    <ion-col size="12">
+      <ion-select [(ngModel)]="dataservice.user.community" label-placement="floating" label="Community" mode="md" justify="space-between" fill="outline" >
+        <ion-select-option *ngFor="let item of communities" [value]="item">{{item}}</ion-select-option>
+      </ion-select>
+    </ion-col>
+  </ion-row>
+
+  <!-- Category -->
+  <ion-row>
+    <ion-col size="12">
+      <ion-select [(ngModel)]="dataservice.user.category" label-placement="floating" label="Category" mode="md" justify="space-between" fill="outline">
+        <ion-select-option *ngFor="let item of categories" [value]="item">{{item}}</ion-select-option>
+      </ion-select>
+    </ion-col>
+  </ion-row>
+
+  <!-- Gender -->
+  <ion-row>
+    <ion-col size="12">
+      <ion-label color="dark" class="SmallBold">Gender</ion-label>
+    </ion-col>
+    <ion-radio-group [(ngModel)]="dataservice.user.gender" mode="md">
+      <ion-row>
+        <ion-item lines="none" *ngFor="let gender of genders">
+          <ion-label class="SmallNormal" color="medium">{{gender}}</ion-label>
+          <ion-radio color="success" slot="start" [value]="gender"></ion-radio>
+        </ion-item>
+      </ion-row>
+    </ion-radio-group>
+  </ion-row>
+</div>
