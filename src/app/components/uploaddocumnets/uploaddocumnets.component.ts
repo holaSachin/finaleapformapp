@@ -35,7 +35,6 @@ export class UploaddocumnetsComponent  implements OnInit {
         details: 'You can upload previous month\'s electricity bill or Rent Agreement'
       }
     ];
-    console.log('uploaddocumnets component')
   }
 
   uploadImage(value: string) {

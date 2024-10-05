@@ -25,12 +25,16 @@ export class HomePage implements OnInit {
 
   segmentChanged(event: CustomEvent) {
     this.dataService.activeSegment = event.detail.value;
-    if (this.dataService.activeSegment === 'business' || this.dataService.activeSegment === 'upload') {
-      if (!this.validatePersonDetails() || (this.dataService.user.references2 && this.dataService.user.references1)) {
-        this.dataService.displayToast('Please Fill Perosnal Details First', 'WARNING');
-        this.dataService.activeSegment = 'personal';
-      }
-    } 
+    if (this.dataService.activeSegment === 'personal') {
+      this.dataService.currentPage = 1;
+      this.openReferenceOne = false;
+      this.openReferenceTwo = false;
+      this.dataService.isBasicDetailsFilled = false;
+    } else if (this.dataService.activeSegment === 'business') {
+      this.dataService.currentPage = 6;
+    } else if (this.dataService.activeSegment === 'upload') {
+      this.dataService.currentPage = 7;
+    }
   }
 
   validatePersonDetails(): boolean {
@@ -197,14 +201,12 @@ export class HomePage implements OnInit {
   goToUploadDocs() {
     this.dataService.activeSegment = 'upload';
     this.dataService.currentPage = 7;
-    console.log(this.userObj)
   }
 
 
   goToProfile() {
     this.dataService.currentPage = 1;
     this.dataService.activeSegment = 'personal';
-    console.log(this.userObj);
   }
 
 
