@@ -5,8 +5,8 @@
       <ion-label color="medium" class="MediumNormal">Please fill all the following details</ion-label>
     </ion-col>
     <ion-col size="12">
-      <ion-img *ngIf="!dataservice.user.imgurl" style="height: 6rem;" src="../../../assets/resources/person.png" alt="Upload profile photo"></ion-img>
-      <ion-img *ngIf="dataservice.user.imgurl" style="height: 6rem;" src="../../../assets/resources/person.png" alt="Upload profile photo"></ion-img>
+      <ion-img (click)="takePicture()" *ngIf="!dataservice.user.imgurl || dataservice.user.imgurl.length === 0" style="height: 6rem;" src="../../../assets/resources/person.png" alt="Upload profile photo"></ion-img>
+      <ion-img *ngIf="dataservice.user.imgurl" style="height: 6rem;" [src]="dataservice.user.imgurl" alt="Upload profile photo"></ion-img>
     </ion-col>
     <ion-col size="12" class="ion-text-center">
       <ion-label class="SmallNormal" color="medium">Upload profile photo</ion-label>

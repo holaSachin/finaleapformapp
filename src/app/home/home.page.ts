@@ -112,6 +112,7 @@ export class HomePage implements OnInit {
       // Page 7: Going back from Upload Docs
       case 7: {
         this.dataService.currentPage = 6;
+        this.dataService.activeSegment = 'business';
         break
       }
       // Page 6: Going back from Business Details

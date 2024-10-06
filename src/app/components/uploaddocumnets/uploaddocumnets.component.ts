@@ -59,11 +59,12 @@ export class UploaddocumnetsComponent  implements OnInit {
         const bucketName = 'foodkartiposimages';
         const result = await this.s3UploadService.uploadFileToS3(file, bucketName);
         this.hideLoader();
+        console.log(result);
         if (result.status === 'success') {
           this.dataService.displayToast('File uploaded successfully', 'SUCCESS');
           item.uploaded = true;
 
-           // Assign the URL to the respective user property based on item.value
+        // Assign the URL to the respective user property based on item.value
         if (item.value === 'address') {
           this.dataService.user.addressproofurl = result.location || " ";  // Set the uploaded file URL to addressproofurl
         } else if (item.value === 'businesss') {
@@ -71,16 +72,17 @@ export class UploaddocumnetsComponent  implements OnInit {
         } else if (item.value === 'residence') {
           this.dataService.user.residenceproofurl = result.location || " ";  // Set the uploaded file URL to residenceproofurl
         }
-
         } else {
           this.dataService.displayToast('Error uploading file', 'FAIL');
-
         }
       }
     };
 
     // Programmatically click the file input to open the file picker
     fileInput.click();
+    fileInput.oncancel = () => {
+      this.dataService.dismissLoader();
+    };
   }
 
   // Method to remove uploaded file
