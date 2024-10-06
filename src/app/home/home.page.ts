@@ -165,37 +165,37 @@ export class HomePage implements OnInit {
   }
 
   goToReferenceOneMore() {
-    if (this.referenceComponent.validateReferenceDetails()) {
+    // if (this.referenceComponent.validateReferenceDetails()) {
       this.openReferenceOne = true;
       this.dataService.currentPage = 3;
       this.dataService.isBasicDetailsFilled = true;
-    }
+    // }
   }
 
   gotToReferenceTwo() {
-    if (this.referenceComponent.validateReferenceDetails()) {
+    // if (this.referenceComponent.validateReferenceDetails()) {
       this.referenceComponent.goNextForMoreDetails();
       this.dataService.isBasicDetailsFilled = false;
       this.openReferenceTwo = true;
       this.openReferenceOne = false;
       this.dataService.currentPage = 4;
-    }
+    // }
   }
 
   gotToReferenceTwoMore() {
-    if (this.referenceComponent.validateReferenceDetails()) {
+    // if (this.referenceComponent.validateReferenceDetails()) {
       this.dataService.isBasicDetailsFilled = true;
       this.openReferenceTwo = true;
       this.dataService.currentPage = 5;
-    }
+    // }
   }
   goToBusiness() {
-    if (this.referenceComponent.validateReferenceDetails()) {
+    // if (this.referenceComponent.validateReferenceDetails()) {
       this.referenceComponent.goNextForMoreDetails();
       this.openReferenceTwo = false;
       this.dataService.activeSegment = 'business';
       this.dataService.currentPage = 6;
-    }
+    // }
   }
 
   goToUploadDocs() {

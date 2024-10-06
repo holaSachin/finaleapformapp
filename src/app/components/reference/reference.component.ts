@@ -92,9 +92,9 @@ export class ReferenceComponent  implements OnInit {
   }
 
   goNextForMoreDetails() {
-    if (this.validateReferenceDetails()) {
-      this.getReferenceDetails.emit(this.referenceUser);
-    }
+    // if (this.validateReferenceDetails()) {
+    this.getReferenceDetails.emit(this.referenceUser);
+    // }
   }
 
 }
