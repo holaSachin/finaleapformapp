@@ -57,11 +57,13 @@ export class UploaddocumnetsComponent  implements OnInit {
       if (target.files && target.files.length > 0) {
         const file = target.files[0];
         const bucketName = 'foodkartiposimages';
-        const result = await this.s3UploadService.uploadFileToS3(file, bucketName);
+        var strfile =  item.value+"_" + new Date().getTime() + ".pdf";
+        const result = await this.s3UploadService.uploadFileToS3(file,strfile,bucketName);
+      
         this.hideLoader();
         console.log(result);
         if (result.status === 'success') {
-          this.dataService.displayToast('File uploaded successfully', 'SUCCESS');
+          // this.dataService.displayToast('File uploaded successfully', 'SUCCESS');
           item.uploaded = true;
 
         // Assign the URL to the respective user property based on item.value

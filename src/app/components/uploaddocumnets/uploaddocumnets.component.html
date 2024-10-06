@@ -11,7 +11,7 @@
         <ion-icon *ngIf="item.uploaded" color="success" name="checkmark-circle" class="upload-icon"></ion-icon>
 
         <!-- Success message and remove button when uploaded -->
-        <ion-label *ngIf="item.uploaded" class="ion-margin-start">File uploaded successfully!</ion-label>
+        <ion-label *ngIf="item.uploaded" class="Mediumbold ion-margin-bottom">{{item.value | capitalizeFirst }} File uploaded successfully!</ion-label>
         <ion-button *ngIf="item.uploaded" color="danger" fill="clear" (click)="removeFile(item)">
           <ion-icon name="trash"></ion-icon>
         </ion-button>

@@ -45,8 +45,8 @@ export class ProfileComponent  implements OnInit {
     const base64Response = await fetch(dataURL);
     const blob = await base64Response.blob();
     const imageFile = new Blob([blob], { type: 'image/*' }) as File;
-    const strfile = new Date().getTime() + '.png';
-    const ret = await this.s3UploadService.uploadFileToS3(imageFile,'foodkartiposimages');
+    const strfile = 'userprofile_' + new Date().getTime() + '.png';
+    const ret = await this.s3UploadService.uploadFileToS3(imageFile,strfile,'foodkartiposimages');
     if (ret) {
       console.log(ret)
       this.isImageUpload = true;

@@ -7,16 +7,17 @@ import { ProfileComponent } from 'src/app/components/profile/profile.component';
 import { ReferenceComponent } from 'src/app/components/reference/reference.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UploaddocumnetsComponent } from 'src/app/components/uploaddocumnets/uploaddocumnets.component';
-
+import { CapitalizeFirstPipe } from '../capitalize-first.pipe'; 
 @NgModule({
   declarations: [
     BusinessComponent,
     ProfileComponent,
     ReferenceComponent,
     UploaddocumnetsComponent,
+    
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [IonicModule, CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [IonicModule, CommonModule, FormsModule, ReactiveFormsModule,CapitalizeFirstPipe],
   exports: [
     BusinessComponent,
     ProfileComponent,
