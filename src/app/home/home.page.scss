@@ -25,3 +25,13 @@
 #container a {
   text-decoration: none;
 }
+
+ion-segment-button {
+  min-width: 130px; /* Adjust the width as needed */
+}
+
+ion-label.Smallbold {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* This will truncate the text with '...' if it's too long */
+}

@@ -1,13 +1,24 @@
-
-
 <ion-row *ngFor="let item of uploadDocsLabelObj">
-  <ion-label class="Mediumbold ion-margin-start ion-margin-top" color="dark">{{item.label}}</ion-label>
+  <!-- Label for the document -->
+  <ion-label class="Mediumbold ion-margin-start ion-margin-top" color="dark">{{ item.label }}</ion-label>
+
+  <!-- Card for upload and status -->
   <ion-card>
     <ion-card-content>
       <ion-row class="ion-justify-content-center ion-align-items-center">
-        <ion-icon color="success" (click)="uploadImage(item.value)" name="cloud-upload" class="upload-icon"></ion-icon>
+        <!-- Show different icon based on upload status -->
+        <ion-icon *ngIf="!item.uploaded" color="success" (click)="uploadImage(item)" name="cloud-upload" class="upload-icon"></ion-icon>
+        <ion-icon *ngIf="item.uploaded" color="success" name="checkmark-circle" class="upload-icon"></ion-icon>
+
+        <!-- Success message and remove button when uploaded -->
+        <ion-label *ngIf="item.uploaded" class="ion-margin-start">File uploaded successfully!</ion-label>
+        <ion-button *ngIf="item.uploaded" color="danger" fill="clear" (click)="removeFile(item)">
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
       </ion-row>
     </ion-card-content>
   </ion-card>
-  <ion-label class="SmallNormal ion-margin-start" color="medium">{{item.details}}</ion-label>
+
+  <!-- Details about the document -->
+  <ion-label class="SmallNormal ion-margin-start" color="medium">{{ item.details }}</ion-label>
 </ion-row>
